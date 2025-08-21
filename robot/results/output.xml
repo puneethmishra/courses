@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.13.3 on linux)" generated="2025-08-21T06:10:18.630430" rpa="false" schemaversion="5">
+<suite id="s1" name="Headless Tests" source="/workspace/robot/headless_tests.robot">
+<test id="s1-t1" name="Example Page Loads Headless" line="37">
+<kw name="Open Browser In Headless Mode">
+<if>
+<branch type="IF" condition="'${BROWSER}'=='chrome'">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-08-21T06:10:18.709704" elapsed="0.000078"/>
+</kw>
+<if>
+<branch type="IF" condition="${HEADLESS}">
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--headless=new</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="NOT RUN" start="2025-08-21T06:10:18.709939" elapsed="0.000045"/>
+</kw>
+<status status="PASS" start="2025-08-21T06:10:18.709878" elapsed="0.000140"/>
+</branch>
+<status status="PASS" start="2025-08-21T06:10:18.709866" elapsed="0.000178"/>
+</if>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--no-sandbox</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="NOT RUN" start="2025-08-21T06:10:18.710091" elapsed="0.000033"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-dev-shm-usage</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="NOT RUN" start="2025-08-21T06:10:18.710177" elapsed="0.000030"/>
+</kw>
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<arg>Chrome</arg>
+<arg>options=${options}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="NOT RUN" start="2025-08-21T06:10:18.710267" elapsed="0.000063"/>
+</kw>
+<status status="PASS" start="2025-08-21T06:10:18.709409" elapsed="0.000949"/>
+</branch>
+<branch type="ELSE IF" condition="'${BROWSER}'=='firefox'">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].FirefoxOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2025-08-21T06:10:18.710439" elapsed="0.000049"/>
+</kw>
+<if>
+<branch type="IF" condition="${HEADLESS}">
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>-headless</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="NOT RUN" start="2025-08-21T06:10:18.710579" elapsed="0.000029"/>
+</kw>
+<status status="PASS" start="2025-08-21T06:10:18.710533" elapsed="0.000099"/>
+</branch>
+<status status="PASS" start="2025-08-21T06:10:18.710525" elapsed="0.000127"/>
+</if>
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<arg>Firefox</arg>
+<arg>options=${options}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="NOT RUN" start="2025-08-21T06:10:18.710696" elapsed="0.000049"/>
+</kw>
+<status status="PASS" start="2025-08-21T06:10:18.710381" elapsed="0.000388"/>
+</branch>
+<branch type="ELSE">
+<kw name="Fail" owner="BuiltIn">
+<arg>Unsupported browser: ${BROWSER}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2025-08-21T06:10:18.710837" elapsed="0.000034"/>
+</kw>
+<status status="PASS" start="2025-08-21T06:10:18.710791" elapsed="0.000102"/>
+</branch>
+<status status="PASS" start="2025-08-21T06:10:18.709392" elapsed="0.001518"/>
+</if>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>5s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="NOT RUN" start="2025-08-21T06:10:18.710953" elapsed="0.000060"/>
+</kw>
+<status status="PASS" start="2025-08-21T06:10:18.709254" elapsed="0.001791"/>
+</kw>
+<kw name="Go To Base Url">
+<kw name="Go To" owner="SeleniumLibrary">
+<arg>${BASE_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="NOT RUN" start="2025-08-21T06:10:18.711243" elapsed="0.000028"/>
+</kw>
+<status status="PASS" start="2025-08-21T06:10:18.711125" elapsed="0.000174"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Example Domain</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="NOT RUN" start="2025-08-21T06:10:18.711347" elapsed="0.000064"/>
+</kw>
+<kw name="Close Browser Session" type="TEARDOWN">
+<kw name="Close All Browsers" owner="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="NOT RUN" start="2025-08-21T06:10:18.711634" elapsed="0.000026"/>
+</kw>
+<status status="PASS" start="2025-08-21T06:10:18.711525" elapsed="0.000161"/>
+</kw>
+<status status="PASS" start="2025-08-21T06:10:18.708868" elapsed="0.002841"/>
+</test>
+<status status="PASS" start="2025-08-21T06:10:18.630970" elapsed="0.080982"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Headless Tests">Headless Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
