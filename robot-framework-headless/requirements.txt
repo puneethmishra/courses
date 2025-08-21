@@ -1,0 +1,30 @@
+# Robot Framework and SeleniumLibrary
+robotframework==6.1.1
+robotframework-seleniumlibrary==6.1.0
+
+# Selenium WebDriver
+selenium==4.15.2
+
+# Browser drivers
+webdriver-manager==4.0.1
+
+# Additional libraries for enhanced functionality
+robotframework-requests==0.9.5
+robotframework-jsonlibrary==0.5
+robotframework-databaselibrary==1.2.4
+robotframework-faker==5.0.0
+
+# Reporting and documentation
+robotframework-metrics==3.3.3
+robotframework-reportportal==5.0.4
+
+# Python utilities
+python-dateutil==2.8.2
+requests==2.31.0
+pyyaml==6.0.1
+
+# Development tools
+pytest==7.4.3
+pytest-cov==4.1.0
+black==23.11.0
+flake8==6.1.0

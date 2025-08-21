@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  robot-tests:
+    build: .
+    container_name: robot-framework-headless
+    volumes:
+      - ./results:/workspace/results
+      - ./tests:/workspace/tests
+      - ./resources:/workspace/resources
+    environment:
+      - ROBOT_OPTIONS=${ROBOT_OPTIONS:-}
+    command: >
+      bash -c "
+        robot -d results
+        ${ROBOT_OPTIONS}
+        tests/headless_browser_tests.robot
+      "
+    
+  # Run specific test
+  robot-test-chrome:
+    build: .
+    container_name: robot-chrome-test
+    volumes:
+      - ./results:/workspace/results
+      - ./tests:/workspace/tests
+      - ./resources:/workspace/resources
+    command: robot -d results -i chrome tests/headless_browser_tests.robot
+  
+  # Run simple example
+  robot-simple:
+    build: .
+    container_name: robot-simple-test
+    volumes:
+      - ./results:/workspace/results
+      - ./tests:/workspace/tests
+      - ./resources:/workspace/resources
+    command: robot -d results tests/simple_example.robot
+  
+  # Interactive shell for debugging
+  robot-shell:
+    build: .
+    container_name: robot-shell
+    volumes:
+      - ./results:/workspace/results
+      - ./tests:/workspace/tests
+      - ./resources:/workspace/resources
+    entrypoint: /bin/bash
+    stdin_open: true
+    tty: true
