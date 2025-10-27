@@ -1,0 +1,15 @@
+results/
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+.env
+.git/
+.gitignore
+*.log
+.DS_Store
+Thumbs.db
